@@ -1,13 +1,11 @@
 package com.semanticcode.webfluxdemo.controller;
 
 import com.semanticcode.webfluxdemo.dto.Response;
+import com.semanticcode.webfluxdemo.dto.ResponseDto;
 import com.semanticcode.webfluxdemo.service.ReactiveMathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -35,5 +33,10 @@ public class ReactiveMathController {
     @GetMapping(value = "table/{input}/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Response> multiplicationTableStream(@PathVariable int input) {
         return this.mathService.multiplication(input);
+    }
+
+    @PostMapping(value = "multiply")
+    public Mono<Response> multiply(@RequestBody Mono<ResponseDto> responseDto) {
+        return this.mathService.multiply(responseDto);
     }
 }
