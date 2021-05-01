@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+
 /**
  * Created by Joesta on 2021/05/01
  */
@@ -20,7 +22,8 @@ public class ReactiveMathService {
 
     public Flux<Response> multiplication(int input) {
         return Flux.range(1, 10)
-                .doOnNext(i -> SleepUtil.sleepSeconds(1))
+                .delayElements(Duration.ofSeconds(1)) // non-blocking sleep
+                // .doOnNext(i -> SleepUtil.sleepSeconds(1))
                 .doOnNext(i -> System.out.println("reactive-math-processing: " + i))
                 .map(i -> new Response(i * input));
     }
