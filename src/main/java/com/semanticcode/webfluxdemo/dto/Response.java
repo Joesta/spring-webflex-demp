@@ -1,4 +1,4 @@
-package com.semanticcode.webflexdemo.dto;
+package com.semanticcode.webfluxdemo.dto;
 
 import lombok.Data;
 import lombok.ToString;

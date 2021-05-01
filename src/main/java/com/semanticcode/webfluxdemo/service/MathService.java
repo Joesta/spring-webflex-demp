@@ -1,7 +1,7 @@
-package com.semanticcode.webflexdemo.service;
+package com.semanticcode.webfluxdemo.service;
 
-import com.semanticcode.webflexdemo.dto.Response;
-import com.semanticcode.webflexdemo.util.SleepUtil;
+import com.semanticcode.webfluxdemo.dto.Response;
+import com.semanticcode.webfluxdemo.util.SleepUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

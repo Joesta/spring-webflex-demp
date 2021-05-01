@@ -1,4 +1,4 @@
-package com.semanticcode.webflexdemo.util;
+package com.semanticcode.webfluxdemo.util;
 
 public class SleepUtil {
     public static void sleepSeconds(int seconds) {

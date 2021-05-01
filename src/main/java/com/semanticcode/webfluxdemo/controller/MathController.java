@@ -1,7 +1,7 @@
-package com.semanticcode.webflexdemo.controller;
+package com.semanticcode.webfluxdemo.controller;
 
-import com.semanticcode.webflexdemo.dto.Response;
-import com.semanticcode.webflexdemo.service.MathService;
+import com.semanticcode.webfluxdemo.dto.Response;
+import com.semanticcode.webfluxdemo.service.MathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
