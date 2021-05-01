@@ -27,8 +27,13 @@ public class ReactiveMathController {
         return this.mathService.findSquare(input);
     }
 
-    @GetMapping(value = "table/{input}/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "table/{input}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Response> multiplicationTable(@PathVariable int input) {
+        return this.mathService.multiplication(input);
+    }
+
+    @GetMapping(value = "table/{input}/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Response> multiplicationTableStream(@PathVariable int input) {
         return this.mathService.multiplication(input);
     }
 }
