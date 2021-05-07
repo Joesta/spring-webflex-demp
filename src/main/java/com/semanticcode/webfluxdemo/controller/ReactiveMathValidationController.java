@@ -4,6 +4,8 @@ import com.semanticcode.webfluxdemo.dto.Response;
 import com.semanticcode.webfluxdemo.exception.InputValidationException;
 import com.semanticcode.webfluxdemo.service.MathService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -40,5 +42,14 @@ public class ReactiveMathValidationController {
                         sink.error(new InputValidationException(input));
                 }).cast(Integer.class)
                 .map(i -> this.mathService.findSquare(input));
+    }
+
+    @GetMapping("sqrt/{input}/monoErr")
+    public Mono<ResponseEntity<Response>> assignment(@PathVariable int input) {
+        return Mono.just(input)
+                .filter(i -> i >= 10 && i <= 20)
+                .map(i -> this.mathService.findSquare(i))
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
 }
